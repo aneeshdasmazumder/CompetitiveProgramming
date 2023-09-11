@@ -59,6 +59,7 @@ class Solution
         int count = 0;
         int max=0;
         ArrayList<Integer> list = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
         for(int i=0; i<=(n-k); i++) {
             count=0;
             temp=i;
@@ -71,6 +72,22 @@ class Solution
             
             list.add(max);
         }
+        
+        // for loop from 0 to n-1
+        // for(int i=0; i<n; i++) {
+        //     if(queue.size() == k) {
+        //         queue.poll();
+        //         list.add(max);
+        //         max = Math.max(max, arr[i]);
+        //         queue.offer(arr[i]);
+        //     } else {
+        //         max = Math.max(max, arr[i]);
+        //         queue.offer(arr[i]);
+        //     }  
+        // }
+            
+        // list.add(max);
+            
         
         return list;
     }
