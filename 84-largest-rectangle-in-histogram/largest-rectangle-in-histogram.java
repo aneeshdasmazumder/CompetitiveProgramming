@@ -18,9 +18,7 @@ class Solution {
                 prev[i] = stk.peek();
                 stk.push(i);
             }
-            // System.out.print(prev[i] + " ");
         }
-        // System.out.println();
         stk.clear();
 
         for(int i=heights.length-1; i>=0; i--) {
@@ -35,11 +33,6 @@ class Solution {
                 next[i] = stk.peek();
                 stk.push(i);
             }
-            
-        }
-
-        for(int i=0; i<heights.length; i++) {
-            // System.out.print(next[i] + " ");
             int area = ((next[i] - prev[i] - 1) * heights[i]);
             maxArea = Math.max(maxArea, area);
         }
