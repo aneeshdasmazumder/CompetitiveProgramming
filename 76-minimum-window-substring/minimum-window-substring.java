@@ -24,7 +24,7 @@ class Solution {
             }
             end++;
         
-            
+            if(count>0) continue;
         
             // loop until count > 0
             while(count == 0) {
