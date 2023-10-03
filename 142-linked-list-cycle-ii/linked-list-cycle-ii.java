@@ -29,15 +29,12 @@ public class Solution {
             } else return nullNode;
         }
 
-        ListNode temp = fast;
         ListNode tempBeg = head;
-        int pos = 0;
-        while(temp != tempBeg) {
-            temp = temp.next;
+        while(fast != tempBeg) {
+            fast = fast.next;
             tempBeg = tempBeg.next;
-            pos++;
         }
 
-        return temp;
+        return fast;
     }
 }
