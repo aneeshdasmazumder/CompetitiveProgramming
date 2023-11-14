@@ -1,31 +1,30 @@
 class Solution {
     public String reverseWords(String s) {
-        List<String> str = new ArrayList<>();
-        String st = "";
-        int i=0;
-        for(; i<s.length(); i++) {
-            // System.out.println(s.charAt(i));
-            if(Character.isWhitespace(s.charAt(i))) {
-                str.add(st);
-                st = "";
-            } else {
-                String tempS = String.valueOf(s.charAt(i));
-                st = st + tempS;
+        String str = "";
+        String resultStr = "";
+        StringBuilder builder = new StringBuilder();
+        // continue checking from last until the string ends
+        for(int i=s.length()-1; i>=0; i--) {
+            // Go on concatinating letters until space is found
+            String newStr = String.valueOf(s.charAt(i));
+            if(!newStr.equals(" ")) {
+                
+                str = newStr.concat(str);
+                // System.out.println(str);
+            } else if(newStr.equals(" ") && !str.equals("")){
+                resultStr = resultStr + str + " ";
+                // System.out.println(resultStr);
+                str = "";
             }
-        }
-        if(!Character.isWhitespace(s.charAt(i-1))) {
-            str.add(st);
-        }
-        System.out.println(str);
-        String newStr = "";
 
-        for(int j=str.size() -1; j>=0; j--) {
-            // System.out.println(str[i].trim());
-            if(str.get(j) != "")
-                newStr =newStr + str.get(j) + " ";
-        }
+            if(i==0 && !str.equals("")) {
+                resultStr = resultStr + str;
+                // System.out.println(resultStr);
+                str = "";
+            }
 
-        
-        return newStr.trim();
+        }
+        // System.out.println(resultStr);
+        return resultStr.trim();
     }
 }
