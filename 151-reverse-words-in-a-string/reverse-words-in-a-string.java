@@ -1,31 +1,35 @@
 class Solution {
     public String reverseWords(String s) {
         List<String> str = new ArrayList<>();
-        String st = "";
+        StringBuilder st = new StringBuilder();
+        st.append("");
         int i=0;
         for(; i<s.length(); i++) {
             // System.out.println(s.charAt(i));
             if(Character.isWhitespace(s.charAt(i))) {
-                str.add(st);
-                st = "";
+                str.add(st.toString());
+                st = new StringBuilder();
+                st.append("");
             } else {
                 String tempS = String.valueOf(s.charAt(i));
-                st = st + tempS;
+                st.append(tempS);
+                // st = st + tempS;
             }
         }
         if(!Character.isWhitespace(s.charAt(i-1))) {
-            str.add(st);
+            str.add(st.toString());
         }
         System.out.println(str);
-        String newStr = "";
-
+        StringBuilder newStr = new StringBuilder();
+        newStr.append("");
         for(int j=str.size() -1; j>=0; j--) {
             // System.out.println(str[i].trim());
             if(str.get(j) != "")
-                newStr =newStr + str.get(j) + " ";
+                // newStr =newStr + str.get(j) + " ";
+                newStr.append(str.get(j)).append(" ");
         }
 
         
-        return newStr.trim();
+        return newStr.toString().trim();
     }
 }
