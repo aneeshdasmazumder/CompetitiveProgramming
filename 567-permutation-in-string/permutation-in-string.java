@@ -39,9 +39,6 @@ class Solution {
             if(count == 0) return true;
             end++;
         }
-        
-
-
         return false;
     }
 }
