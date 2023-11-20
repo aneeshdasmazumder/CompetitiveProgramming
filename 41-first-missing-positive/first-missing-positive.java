@@ -15,8 +15,6 @@ class Solution {
             // System.out.println(nums[i]);
         }
 
-        int val = Integer.MAX_VALUE;
-
         int count = 1;
         int idx = 0;
         while(idx < nums.length && nums[idx] == count) {
