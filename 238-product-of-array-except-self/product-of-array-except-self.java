@@ -34,7 +34,7 @@ class Solution {
         for(int i=n-2; i>=0; i--) {
             right[i] = right[i+1] * nums[i];
         }
-
+        // Answer is left of the idex of left array * right of the index of right array
         ans[0] = right[1];
         ans[n-1] = left[n-2];
 
