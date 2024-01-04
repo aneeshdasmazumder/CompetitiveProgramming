@@ -1,63 +1,60 @@
 class Solution {
     public String minWindow(String s, String t) {
-        int start = 0;
-        int end = 0;
-        int i=0;
-        int j=s.length();
-        int min = s.length();
+        if(t.length() > s.length()) return "";
+        // Define a HashMap to store the unique chars and count
+        Map<Character, Integer> uniqueChar = new HashMap<>();
+
         int count = t.length();
-        boolean isPresent = false;
-        Map<Character, Integer> map = new HashMap<>();
-        for(int x=0; x< t.length(); x++) {
-            map.put(t.charAt(x), map.getOrDefault(t.charAt(x), 0)+1);
+
+        for(int i=0; i<count; i++) {
+            if(!uniqueChar.containsKey(t.charAt(i))) {
+                uniqueChar.put(t.charAt(i), 1);
+            } else {
+                uniqueChar.put(t.charAt(i), uniqueChar.get(t.charAt(i)) + 1);
+            }
         }
-        // Start moving end from 0 and check if letter is present in the map
-        while(end < s.length()) {
-            // if count is not equal to 0
-            
-            System.out.println("Entering : "+end);
-            // If found in map decrement the value and count (if value is >= 0)
-            if(map.containsKey(s.charAt(end))) {
-                map.put(s.charAt(end), map.get(s.charAt(end))-1);
-                if(map.get(s.charAt(end)) >= 0)
+
+        int left = 0; int right = 0; int l = -1; int r = -1;
+        int minLength = s.length();
+        int len = 0;
+        String resultStr = "";
+        while(left <= right && right < s.length()) {
+            // System.out.println(count + " " + s.charAt(right));
+
+            if(uniqueChar.containsKey(s.charAt(right))) {
+                uniqueChar.put(s.charAt(right), uniqueChar.get(s.charAt(right)) - 1);
+                if(uniqueChar.get(s.charAt(right)) >= 0)
                     count--;
             }
-            end++;
-        
+
             
-        
-            // loop until count > 0
             while(count == 0) {
-                // check if i is present in the map
-                if(map.containsKey(s.charAt(start))) {
-                    // If yes increment the value in the map and count (if value is > 0)
-                    map.put(s.charAt(start), map.get(s.charAt(start))+1);
-                    if(map.get(s.charAt(start)) > 0)
+                
+                if(uniqueChar.containsKey(s.charAt(left))) {
+                    uniqueChar.put(s.charAt(left), uniqueChar.get(s.charAt(left)) + 1);
+                    if(uniqueChar.get(s.charAt(left)) > 0)
                         count++;
                 }
-                    
-                start++;
+
                 if(count > 0) {
-                    int diff = end - start;
-                    if(diff < min) {
-                        i = start-1;
-                        j = end;
-                        min = diff;
+                    int diff = right - left;
+                    if(diff < minLength) {
+                        l = left;
+                        r = right+1;
+                        minLength = diff;
                     }
-                    isPresent = true;
                 }
+
+                left++;
             }
-                
-            // System.out.println("Start: "+start);
-            // System.out.println("End: "+end);
-            // System.out.println("count: "+count); 
-        }
-        // System.out.println(i);
-        if(isPresent) {
-            String finalStr = s.substring(i, j);
-            return finalStr;
-        } else return "";
-        
+
+            right++;
             
+        }
+        // System.out.println(l + " " + r);
+        if(l >=0 && r >= 0)
+            resultStr = s.substring(l, r);
+        
+        return resultStr;
     }
 }
