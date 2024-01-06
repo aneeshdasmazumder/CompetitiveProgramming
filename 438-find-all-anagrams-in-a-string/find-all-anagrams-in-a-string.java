@@ -1,45 +1,46 @@
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
+        Map<Character, Integer> map = new HashMap<>();
         List<Integer> result = new ArrayList<>();
         if(p.length() > s.length()) return result;
-        Map<Character, Integer> map = new HashMap<>();
-        int len = p.length();
-        
-        for(int i=0; i<len; i++) {
+        int count = p.length();
+
+        for(int i=0; i< count; i++) {
             if(!map.containsKey(p.charAt(i))) {
                 map.put(p.charAt(i), 1);
             } else {
                 map.put(p.charAt(i), map.get(p.charAt(i)) + 1);
             }
         }
-        int start = 0; int end = 0;
-        int count = len;
-        while(end < len) {
-            if(map.containsKey(s.charAt(end))) {
-                if(map.get(s.charAt(end)) > 0) count--;
-                map.put(s.charAt(end), map.get(s.charAt(end)) - 1);
-                
-            }
-            if(count == 0) result.add(start);
-            end++;
-        }
+        int left = 0, right = 0;
         
-
-        while (end < s.length()) {
-            if(map.containsKey(s.charAt(start))) {
-                map.put(s.charAt(start), map.get(s.charAt(start)) + 1);
-                if(map.get(s.charAt(start)) > 0) count++;
-            }
-            start++;
-
-            if(map.containsKey(s.charAt(end))) {
-                if(map.get(s.charAt(end)) > 0) count--;
-                map.put(s.charAt(end), map.get(s.charAt(end)) - 1);
+        while(right < p.length()) {
+            if(map.containsKey(s.charAt(right))) {
+                map.put(s.charAt(right), map.get(s.charAt(right)) - 1);
+                if(map.get(s.charAt(right)) >= 0) count--;
             }
 
-            if(count == 0) result.add(start);
-            end++;
+            right++;
         }
+
+        if(count == 0) result.add(left);
+
+        while(right < s.length()) {
+
+            if(map.containsKey(s.charAt(left))) {
+                map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
+                if(map.get(s.charAt(left)) > 0) count++;
+            }
+            left++;
+
+            if(map.containsKey(s.charAt(right))) {
+                map.put(s.charAt(right), map.get(s.charAt(right)) - 1);
+                if(map.get(s.charAt(right)) >= 0) count--;
+            }
+            if(count == 0) result.add(left);
+            right++;
+        }
+
         return result;
     }
 }
