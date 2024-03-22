@@ -15,6 +15,7 @@ class Solution {
             }
             total+=diff;
         }
+        
         if(total>=0){
             return start;
         }
