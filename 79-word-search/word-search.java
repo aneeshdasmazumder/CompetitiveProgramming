@@ -30,7 +30,7 @@ class Solution {
             if(isWordExist(board, word, row+1, col, idx+1)) return true;
 
             board[row][col] = word.charAt(idx);
-        } else return false;
+        }
 
         return false;
     }
