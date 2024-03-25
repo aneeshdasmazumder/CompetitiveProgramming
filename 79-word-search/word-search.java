@@ -5,7 +5,6 @@ class Solution {
                 if(isWordExist(board, word, row, col, 0)) return true;
             }
         }
-
         return false;
     }
 
@@ -35,3 +34,5 @@ class Solution {
         return false;
     }
 }
+
+// Time Complexity - O(4^n) exponentially
