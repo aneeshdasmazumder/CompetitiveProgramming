@@ -16,24 +16,20 @@ public class Solution {
 
         // Optimized
         int[] prefix = new int[size];
-        int[] sufix = new int[size];
-        prefix[0] = nums[0];
 
+        // Since left of nums[0] has nothing so prefix[0] = 1
+        answer[0] = 1;
+
+        // In every index, we are storing the product of all the values right to it.
         for(int i=1; i<size; i++) {
-            prefix[i] = prefix[i-1] * nums[i];
+            answer[i] = answer[i-1] * nums[i-1];
         }
 
-        sufix[size-1] = nums[size-1];
+        int productOfRightIndex = 1;
 
-        for(int i=size-2; i>=0; i--) {
-            sufix[i] = sufix[i+1] * nums[i];
-        }
-
-        answer[0] = sufix[1];
-        answer[size-1] = prefix[size-2];
-
-        for(int i=1; i<size-1; i++) {
-            answer[i] = prefix[i-1] * sufix[i+1];
+        for(int i=size-1; i>=0; --i) {
+            answer[i] = answer[i] * productOfRightIndex;
+            productOfRightIndex *= nums[i];
         }
 
         return answer;
