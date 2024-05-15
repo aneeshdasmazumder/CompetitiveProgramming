@@ -1,17 +1,23 @@
 public class Solution {
     public void SortColors(int[] nums) {
-        int i=nums.Length - 1;
-        int c = 2;
-        while(i>=0 && c>=0) {
-            for(int j=i; j>=0; j--) {
-                if(nums[j]==c) {
-                    int temp = nums[i];
-                    nums[i] = nums[j];
-                    nums[j] = temp;
-                    i--;
-                }
-            }
-            c--;
+        int zeros = 0 ;
+        int ones =0;
+        int twos = 0 ;
+        for(int i =0 ; i < nums.Length ; i++){
+            if(nums[i]==0){
+                zeros++;
+            }else if(nums[i]==1){
+                ones++;
+            }else twos++;
+        }
+        for(int i=0 ; i< zeros ; i++){
+            nums[i]=0;
+        }
+        for(int i = zeros ; i< zeros+ones ; i++){
+            nums[i] = 1;
+        }
+        for(int i=zeros+ones ; i< nums.Length ; i++){
+            nums[i]=2;
         }
     }
 }
