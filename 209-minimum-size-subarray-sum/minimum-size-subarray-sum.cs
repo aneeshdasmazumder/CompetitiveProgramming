@@ -3,7 +3,6 @@ public class Solution {
         if(nums[0] == target) return 1;
         int left =0;
         int right = 0;
-        int count = 0;
         int sum = 0;
         int minLen = Int32.MaxValue;
         while(right < nums.Length) {
