@@ -10,12 +10,12 @@ public class Solution {
             sum += nums[right];
             if(sum >= target) {
                 minLen = Math.Min(minLen, (right - left) + 1);
-                Console.WriteLine(right + " " +minLen + " " + sum);
+                // Console.WriteLine(right + " " +minLen + " " + sum);
             }
                 
             
             while(sum > target  && left < right) {
-                Console.WriteLine(right + " " +sum);
+                // Console.WriteLine(right + " " +sum);
                 sum -= nums[left];
                 left++;
                 if(sum >= target) {
