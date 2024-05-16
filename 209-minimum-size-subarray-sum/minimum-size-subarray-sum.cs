@@ -8,19 +8,17 @@ public class Solution {
         int minLen = Int32.MaxValue;
         while(right < nums.Length) {
             sum += nums[right];
-            if(sum >= target) {
-                minLen = Math.Min(minLen, (right - left) + 1);
-                // Console.WriteLine(right + " " +minLen + " " + sum);
-            }
+            // if(sum >= target) {
+            //     minLen = Math.Min(minLen, (right - left) + 1);
+            //     // Console.WriteLine(right + " " +minLen + " " + sum);
+            // }
                 
             
-            while(sum > target  && left < right) {
+            while(sum >= target) {
                 // Console.WriteLine(right + " " +sum);
+                minLen = Math.Min(minLen, (right - left) + 1);
                 sum -= nums[left];
                 left++;
-                if(sum >= target) {
-                    minLen = Math.Min(minLen, (right - left) + 1);
-                }
             }
 
             right++;
