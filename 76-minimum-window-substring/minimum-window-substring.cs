@@ -3,7 +3,7 @@ public class Solution {
         if(t.Length > s.Length) return "";
         if(s.Equals(t)) return s;
         Dictionary<char, int> tMap = new Dictionary<char, int>();
-        int minLen = s.Length+1;
+        int minLen = s.Length;
         int len = s.Length;
         int l = -1, r=-1;
         int count = t.Length;
@@ -35,7 +35,7 @@ public class Solution {
                 }
                 if(count > 0) {
                     len = (right - left) + 1;
-                    if(minLen > len) {
+                    if(minLen >= len) {
                         minLen = len;
                         l = left;
                         r = minLen;
