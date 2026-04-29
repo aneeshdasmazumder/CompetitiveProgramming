@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run QuickSort",
+            "type": "shell",
+            "command": "javac QuickSort.java && java QuickSort",
+            "options": {
+                "cwd": "${workspaceFolder}/Sorting"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$javac"
+        }
+    ]
+}
