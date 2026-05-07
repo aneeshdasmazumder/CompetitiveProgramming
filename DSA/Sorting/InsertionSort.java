@@ -31,23 +31,21 @@ Example Test Cases:
    Output: [-3, 0, 7, 7, 9]
 */
 public class InsertionSort {
-    public static void swap(int[] arr, int idx1, int idx2) {
-        int temp = arr[idx1];
-        arr[idx1] = arr[idx2];
-        arr[idx2] = temp;
+    public static void swap(int[] arr, int val, int idx) {
+        arr[idx] = val;
+        //arr[idx2] = temp;
     }
 
     public static void insertionSort(int[] arr) {
-        for(int i=0; i<arr.length - 1; i++) {
+        for(int i=0; i<arr.length-1; i++) {
             int j = i+1;
-            int tempIdx = j;
-            int temp = arr[tempIdx];
-            int x = i;
-            while (j >0 && temp <= arr[j-1]) { 
+            int temp = arr[j];
+            while(j>0 && temp < arr[j-1]) {
                 arr[j] = arr[j-1];
                 j--;
             }
             arr[j] = temp;
+            //swap(arr, temp, i);
         }
     }
 
