@@ -38,13 +38,12 @@ public class SelectionSort {
     }
 
     public static void selectionSort(int[] arr) {
-        for(int i=0; i<arr.length; i++) {
+        for(int i=0; i<arr.length-1; i++) {
             int tempIdx = i;
-            for(int j=i; j<arr.length; j++) {
-                if(arr[tempIdx] > arr[j] ) {
-                    tempIdx = j;
-                }
+            for(int j=i+1; j<arr.length; j++) {
+                if(arr[j] < arr[tempIdx]) tempIdx = j;
             }
+
             swap(arr, tempIdx, i);
         }
     }
