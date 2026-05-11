@@ -38,14 +38,13 @@ public class InsertionSort {
 
     public static void insertionSort(int[] arr) {
         for(int i=0; i<arr.length-1; i++) {
-            int j = i+1;
+            int j= i+1;
             int temp = arr[j];
-            while(j>0 && temp < arr[j-1]) {
-                arr[j] = arr[j-1];
+            while(j>0 && temp <= arr[j-1]) {
+                swap(arr, arr[j-1], j);
                 j--;
             }
             arr[j] = temp;
-            //swap(arr, temp, i);
         }
     }
 
