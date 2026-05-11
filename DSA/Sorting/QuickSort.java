@@ -50,16 +50,15 @@ public class QuickSort {
     }
 
     private static int partition(int[] arr, int low, int high) {
-        int pivot = low;
-
+        int pi = low;
         while(low < arr.length && high >=0 && low < high) {
-            while(low < arr.length && arr[low] <= arr[pivot]) low++;
-            while(high >=0 && arr[high] > arr[pivot]) high--;
+            while(low < arr.length && arr[low] <= arr[pi]) low++;
+            while(high >=0 && arr[high] > arr[pi]) high--;
 
             if(low < high) swap(arr, low, high);
         }
 
-        swap(arr, pivot, high);
+        swap(arr, pi, high);
 
         return high;
     }
