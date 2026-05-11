@@ -42,6 +42,7 @@ public class BubbleSort {
                 if(arr[j] > arr[j+1]) swap(arr, j);
             }
         }
+        
     }
 
     public static void main(String[] args) {
