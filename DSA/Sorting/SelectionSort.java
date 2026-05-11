@@ -44,7 +44,7 @@ public class SelectionSort {
                 if(arr[j] < arr[tempIdx]) tempIdx = j;
             }
 
-            swap(arr, tempIdx, i);
+            swap(arr, i, tempIdx);
         }
     }
 
