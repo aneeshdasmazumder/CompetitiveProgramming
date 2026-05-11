@@ -5,12 +5,12 @@ public class MergeSort {
 
     private static void mergeSort(int[] arr, int left, int right) {
         if(left < right) {
-            int mid = (left + right)/2;
-
+            int mid = (right + left) / 2;
             mergeSort(arr, left, mid);
             mergeSort(arr, mid+1, right);
             merge(arr, left, mid, right);
         }
+        
     }
 
     private static void merge(int[] arr, int left, int mid, int right) {
@@ -24,12 +24,14 @@ public class MergeSort {
             L[i] = arr[left + i];
         }
 
-        for(int i=0; i<n2; i++) {
-            R[i] = arr[mid + i + 1];
+        for(int j=0; j<n2; j++) {
+            R[j] = arr[mid + j + 1];
         }
-        int i=0, j=0, idx = left;
-        while(i < n1 && j < n2) {
-            if(L[i] < R[j]) {
+
+        int i = 0, j= 0, idx = left;
+
+        while(i<n1 && j < n2 && idx < arr.length) {
+            if(L[i] < R[j]){
                 arr[idx] = L[i];
                 idx++; i++;
             } else {
@@ -37,13 +39,13 @@ public class MergeSort {
                 idx++; j++;
             }
         }
-        
-        while(i<n1) {
+
+        while(i < n1) {
             arr[idx] = L[i];
             idx++; i++;
         }
 
-        while(j<n2) {
+        while(j < n2) {
             arr[idx] = R[j];
             idx++; j++;
         }
