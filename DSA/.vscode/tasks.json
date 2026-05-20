@@ -13,6 +13,15 @@
                 "isDefault": true
             },
             "problemMatcher": "$javac"
+        },
+        {
+            "label": "Run Merge2Arrays",
+            "type": "shell",
+            "command": "javac Merge2Arrays.java && java Merge2Arrays",
+            "options": {
+                "cwd": "${workspaceFolder}/Sorting"
+            },
+            "problemMatcher": "$javac"
         }
     ]
 }
